@@ -1,0 +1,26 @@
+<p>update works!</p>
+{{EmpID}}
+<div class="container-fluid">
+<form [formGroup]="Form" ngSubmit="UpdateUser()">
+<div class="form-group">
+    <label>ID</label>
+    <input type="text" class="form-control" formControlName="EmpID" ngModel={{EmpID}}>
+    </div>
+
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="Name" ngModel={{Name}}>
+        </div>
+
+        <div class="form-group">
+            <label>Code</label>
+            <input type="text" class="form-control" formControlName="EmpCode" ngModel={{EmpCode}}>
+            </div>
+
+            <div class="form-group">
+                <label>Salary</label>
+                <input type="text" class="form-control" formControlName="Salary" ngModel={{Salary}}>
+                </div>
+    <button class="btn btn-primary" type="submit" (click)="UpdateUser(Form.value)">Update</button>
+    </form>
+    </div>

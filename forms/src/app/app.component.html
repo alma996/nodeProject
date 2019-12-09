@@ -39,7 +39,7 @@
       <button class="btn btn-primary" type="submit">Post form</button>&nbsp;&nbsp;
         <button class="btn btn-primary" type="button" (click)="GetUser()">Get form</button>&nbsp;&nbsp;
         <button class="btn btn-primary" type="button" (click)="DeleteUser()">Delete form</button>&nbsp;&nbsp;
-        <button class="btn btn-primary" type="submit" (click)="PutUser()">Update form</button>
+        <button class="btn btn-primary" type="submit" (click)="UpdateUser()">Update form</button>
         <button class="btn btn-primary" type="button" (click)="GetAllUser()">Get</button>
 
         <table>
@@ -55,12 +55,19 @@
               <td>{{user.Name}}</td>
               <td>{{user.EmpCode}}</td>
               <td>{{user.Salary}}</td>
+              <button type="button" (click)="onSelect(user)" class="btn btn-primary">Get ID</button>
+              <button type="button" (click)="DeleteSelectedUser(user)" class="btn btn-primary">Delete</button>
+              <button type="button" (click)="UpdateUser(user)" class="btn btn-primary">Update</button>
             </tr>
           </tbody>
         </table>
-      
+
+
+        <a [routerLink]="['/update/:Name']">Profile
+        </a>
 
   </form>
 </div>
+<router-outlet></router-outlet>
 
 

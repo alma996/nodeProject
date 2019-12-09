@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,9 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    RouterModule.forRoot([
+      {path: 'update/:EmpID/:Name/:EmpCode/:Salary', component:UpdateComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

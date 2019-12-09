@@ -7,6 +7,8 @@ import { NgModule } from '@angular/compiler/src/core';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 import { Router } from '@angular/router';
 import { all, allSettled } from 'q';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { map } from "rxjs/operators"; 
 
 @Component({
   selector: 'app-root',
@@ -17,6 +19,9 @@ export class AppComponent implements OnInit{
 
   registrationForm: FormGroup;
   Users: any;
+  Delete: any;
+  Update: any;
+
 
   get Name(){
     return this.registrationForm.get('Name')
@@ -30,7 +35,7 @@ export class AppComponent implements OnInit{
   }
 
 
-  constructor(private UserdataService: UserdataService, private fb: FormBuilder, private router: Router){
+  constructor(private UserdataService: UserdataService, private fb: FormBuilder, private router: Router, private http: HttpClient){
     
   }
 
@@ -84,6 +89,25 @@ export class AppComponent implements OnInit{
     this.UserdataService.deleteUsers().subscribe((data: any[])=>{
       console.log(data);
      });
+  }
+
+  onSelect(selectedItem : any){ //GetID
+    console.log("Selected item Id: ", selectedItem.EmpID);
+    this.Delete= selectedItem.EmpID;
+  }
+
+  DeleteSelectedUser(selectedItem: any){
+    console.log("Selected item Id: ", selectedItem.EmpID);
+    this.Delete= selectedItem.EmpID;
+   return this.http.delete("http://localhost:3000/employees/" + this.Delete).subscribe(response => console.log(response));
+  }
+
+  UpdateUser(selectedItem: any){
+    this.router.navigate(['/update/'+ selectedItem.EmpID +'/' + selectedItem.Name +'/' + selectedItem.EmpCode +'/' + selectedItem.Salary]);
+    console.log("Selected item id: ", selectedItem.EmpID, selectedItem.Name, selectedItem.EmpCode, selectedItem.Salary);
+    //this.Update= selectedItem.EmpID;
+   //return this.http.put("http://localhost:3000/employees/" + this.Update, this.Update).subscribe(response => console.log(response));
+
   }
 
 
