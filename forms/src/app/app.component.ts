@@ -22,6 +22,9 @@ export class AppComponent implements OnInit{
   Delete: any;
   Update: any;
 
+  get EmpID(){
+    return this.registrationForm.get('EmpID')
+  }
 
   get Name(){
     return this.registrationForm.get('Name')

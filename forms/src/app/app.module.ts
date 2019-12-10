@@ -10,10 +10,12 @@ import { RouterModule } from '@angular/router';
 import { UpdateComponent } from './update/update.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     UpdateComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { UpdateComponent } from './update/update.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: 'update/:EmpID/:Name/:EmpCode/:Salary', component:UpdateComponent}
+      {path: 'update/:EmpID/:Name/:EmpCode/:Salary', component:UpdateComponent},
     ])
   ],
   providers: [],

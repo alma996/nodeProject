@@ -75,7 +75,7 @@ app.post('/employees',(req,res)=>{
 });
 
 //UPDATE AN EMPLOYEES
-app.put('/employees',(req,res)=>{
+app.put('/employees/:id',(req,res)=>{
     console.log('******',req.body);
     
     let emp = req.body;
