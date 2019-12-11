@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { UpdateComponent } from './update/update.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -23,6 +24,7 @@ import { UpdateComponent } from './update/update.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    Ng2SearchPipeModule,
     RouterModule.forRoot([
       {path: 'update/:EmpID/:Name/:EmpCode/:Salary', component:UpdateComponent},
     ])

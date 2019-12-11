@@ -9,18 +9,22 @@ import { Router } from '@angular/router';
 import { all, allSettled } from 'q';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs/operators"; 
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit{
+
+  //install npm i ng2-search-filter --save
 
   registrationForm: FormGroup;
   Users: any;
   Delete: any;
   Update: any;
+  //searchText: any;
 
   get EmpID(){
     return this.registrationForm.get('EmpID')
@@ -39,7 +43,6 @@ export class AppComponent implements OnInit{
 
 
   constructor(private UserdataService: UserdataService, private fb: FormBuilder, private router: Router, private http: HttpClient){
-    
   }
 
 
@@ -50,6 +53,13 @@ export class AppComponent implements OnInit{
       EmpCode: [''],
       Salary: ['']
       })
+
+      this.UserdataService.getAllUsers().subscribe((reponse)=>{
+        console.log(reponse)
+        this.Users=reponse;
+        console.log("alma222", this.Users)
+       });
+      
 
   } 
   RegisterUser(userdata){
@@ -112,6 +122,8 @@ export class AppComponent implements OnInit{
    //return this.http.put("http://localhost:3000/employees/" + this.Update, this.Update).subscribe(response => console.log(response));
 
   }
+
+
 
 
 }
